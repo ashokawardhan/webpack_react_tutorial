@@ -7,14 +7,9 @@ module.exports = {
   entry: {
     app: "./src/index.js"
   },
-  mode: "development",
   output: {
     filename: "[name].[hash].js",
     path: path.resolve(__dirname, "dist")
-  },
-  devServer: {
-    contentBase: "./dist",
-    hot: true
   },
   module: {
     rules: [
@@ -32,7 +27,6 @@ module.exports = {
     new CleanWebpackPlugin(["dist"]),
     new HtmlWebpackPlugin({
       title: "Output Management"
-    }),
-    new webpack.HotModuleReplacementPlugin()
+    })
   ]
 };

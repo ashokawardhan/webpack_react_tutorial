@@ -1,5 +1,6 @@
 import printMe from "./print.js";
 import './style.css';
+import { cube } from "./math.js";
 
 function component() {
     let element = document.createElement('div');
@@ -9,7 +10,7 @@ function component() {
     btn.onclick = printMe;
 
     // Lodash, currently included via a script, is required for this line to work
-    element.innerHTML = "Hello webpack";
+    element.innerHTML = cube(5);
     element.appendChild(btn);
 
     return element;

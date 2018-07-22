@@ -5,11 +5,10 @@ const webpack = require('webpack');
 
 module.exports = {
     entry: {
-        app: "./src/index.js",
-        another: "./src/another-module.js"
+        index: "./src/index.js"
     },
     output: {
-        filename: "[name].[hash].js",
+        chunkFilename: "[name].bundle.js",
         path: path.resolve(__dirname, "dist")
     },
     module: {
@@ -29,10 +28,5 @@ module.exports = {
         new HtmlWebpackPlugin({
         title: "Output Management"
         })
-    ],
-    optimization: {
-        splitChunks: {
-            chunks: 'all'
-        }
-    }
+    ]
 };

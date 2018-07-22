@@ -1,28 +1,12 @@
-import _ from 'lodash';
-import printMe from "./print.js";
 import './style.css';
-import { cube } from "./math.js";
 
-function component() {
+async function getComponent() {
     let element = document.createElement('div');
-    element.classList.add('hello');
-    let btn = document.createElement('button');
-    btn.innerHTML = "Click me and check the console!";
-    btn.onclick = printMe;
-    _.join(["Another", "module", "loaded!"], " ");
-
-    // Lodash, currently included via a script, is required for this line to work
-    element.innerHTML = cube(5);
-    element.appendChild(btn);
-
+    const _ = await import(/* webpackChunkName: "lodash" */ 'lodash');
+    element.innerHTML = _.join(["Hello", "webpack"], " ");
     return element;
 }
 
-document.body.appendChild(component());
-
-if (module.hot) {
-    module.hot.accept('./print.js', function () {
-        console.log('Accepting the updated printMe module!');
-        printMe();
-    })
-}
+getComponent().then(component => {
+    document.body.appendChild(component);
+});

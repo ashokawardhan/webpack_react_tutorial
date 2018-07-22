@@ -1,12 +1,20 @@
+
 import './style.css';
 
-async function getComponent() {
+function component() {
+    let button = document.createElement('button');
+    const br = document.createElement("br");
     let element = document.createElement('div');
-    const _ = await import(/* webpackChunkName: "lodash" */ 'lodash');
-    element.innerHTML = _.join(["Hello", "webpack"], " ");
+    element.innerHTML = "Hello world";
+    button.innerHTML = "Click me and look at the console!";
+    button.onclick = e => import(/* webpackChunkName: "print" */ './print').then(module => {
+        const print = module.default;
+        print();
+    });
+
+    element.appendChild(br);
+    element.appendChild(button);
     return element;
 }
 
-getComponent().then(component => {
-    document.body.appendChild(component);
-});
+document.body.appendChild(component());

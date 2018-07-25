@@ -1,0 +1,9 @@
+{
+    "parser": "babel-eslint",
+    "extends": ["plugin:react/recommended"],
+    "rules": {
+        "semi": [2, "always"],
+        "indent": [2, 4],
+        "space-before-function-paren": "off"
+    }
+}

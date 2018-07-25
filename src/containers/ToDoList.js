@@ -14,4 +14,10 @@ const ToDoList = ({todos, removeTodo, completeTodo}) => (
     </Fragment>
 );
 
+ToDoList.propTypes = {
+    removeTodo: PropTypes.func.isRequired,
+    completeTodo: PropTypes.func.isRequired,
+    todos: PropTypes.arrayOf(PropTypes.object).isRequired
+};
+
 export default ToDoList;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const TodoItem = ({todo, removeTodo, completeTodo}) => (
     <div className="todo-item">
@@ -17,5 +18,11 @@ const TodoItem = ({todo, removeTodo, completeTodo}) => (
         </div>
     </div>
 );
+
+TodoItem.propTypes = {
+    todo: PropTypes.object.isRequired,
+    removeTodo: PropTypes.func.isRequired,
+    completeTodo: PropTypes.func.isRequired
+};
 
 export default TodoItem;

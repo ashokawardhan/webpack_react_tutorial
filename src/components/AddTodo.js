@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const AddTodo = ({addTodo, value}) => (
+const AddTodo = ({addTodo}) => (
     <div className="todo-add-container">
         <input
             type="text"
@@ -10,5 +11,9 @@ const AddTodo = ({addTodo, value}) => (
         />
     </div>
 );
+
+AddTodo.propTypes = {
+    addTodo: PropTypes.func.isRequired
+};
 
 export default AddTodo;

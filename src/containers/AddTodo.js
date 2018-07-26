@@ -1,6 +1,16 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 import AddTodoComponent from '../components/AddTodo';
+import {addTodo} from '../actions';
 
+const mapDispatchToProps = dispatch => {
+    return {
+        addTodo: text => {
+            dispatch(addTodo(text));
+        }
+    };
+};
 class AddTodo extends Component {
     addTodo = ({key, target: {value}}) => {
         if (key === 'Enter') {
@@ -16,4 +26,4 @@ AddTodo.propTypes = {
     addTodo: PropTypes.func.isRequired
 };
 
-export default AddTodo;
+export default connect(null, mapDispatchToProps)(AddTodo);

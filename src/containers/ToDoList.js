@@ -1,23 +1,30 @@
 import React, {Fragment} from 'react';
+import PropTypes from 'prop-types';
 import ToDoItem from './ToDoItem';
+import {connect} from 'react-redux';
 
-const ToDoList = ({todos, removeTodo, completeTodo}) => (
-    <Fragment>
-        {todos.map(todo => (
-            <ToDoItem
-                key={todo.id}
-                removeTodo={removeTodo}
-                todo={todo}
-                completeTodo={completeTodo}
-            />
-        ))}
-    </Fragment>
-);
+const mapStateToProps = state => {
+    return {
+        todos: state.todos
+    };
+};
+class ToDoList extends React.Component {
+    render() {
+        return (
+            <Fragment>
+                {this.props.todos.map(todo => (
+                    <ToDoItem
+                        key={todo.id}
+                        todo={todo}
+                    />
+                ))}
+            </Fragment>
+        );
+    }
+}
 
 ToDoList.propTypes = {
-    removeTodo: PropTypes.func.isRequired,
-    completeTodo: PropTypes.func.isRequired,
     todos: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
-export default ToDoList;
+export default connect(mapStateToProps)(ToDoList);
